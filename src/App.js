@@ -18,7 +18,7 @@ function App() {
       });
       setUrls(data);
     }
-    return main();
+    main();
   }, [])
 
   async function shortenUrl(url) {
