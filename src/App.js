@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Content from './components/Content';
 import Header from './components/Header';
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, onSnapshot, doc } from "firebase/firestore";
 import { db } from './firebase'
 import UrlList from './components/UrlList';
 import { nanoid } from 'nanoid'
@@ -12,15 +12,24 @@ import UrlRedirect from './components/UrlRedirect';
 function App() {
   const [urls, setUrls] = React.useState([]);
   useEffect(() => {
-    async function main() {
-      const querySnapshot = await getDocs(collection(db, "urls"));
+    // async function main() {
+    //   const querySnapshot = await getDocs(collection(db, "urls"));
+    // const data = []
+    // querySnapshot.forEach((doc) => {
+    //   data.push(doc.data())
+    // });
+    // setUrls(data);
+    // }
+    // main();
+    const unsub = onSnapshot(collection(db, "urls"), (querySnapshot) => {
       const data = []
       querySnapshot.forEach((doc) => {
         data.push(doc.data())
       });
       setUrls(data);
-    }
-    main();
+
+    });
+    return unsub;
   }, [])
 
   async function shortenUrl(url) {
