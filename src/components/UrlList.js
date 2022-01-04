@@ -1,9 +1,23 @@
 import React from 'react'
 
-const UrlList = () => {
+const UrlList = ({ urls }) => {
     return (
         <div>
-            list
+            <table>
+                <tr>
+                    <td>Original Url</td>
+                    <td>Shortened</td>
+                    <td>Visits</td>
+                </tr>
+                {urls.map((url, index) => (
+                    <tr key={index}>
+                        <td>{url.main_url}</td>
+                        <td>{url.short_url}</td>
+                        <td>{url.clicks}</td>
+                    </tr>
+                ))}
+
+            </table>
         </div>
     )
 }

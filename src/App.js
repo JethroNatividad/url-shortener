@@ -23,7 +23,7 @@ function App() {
     <div className="App h-screen bg-gray-100">
       <Header />
       <Content />
-      <UrlList />
+      <UrlList urls={urls} />
     </div>
   );
 }
