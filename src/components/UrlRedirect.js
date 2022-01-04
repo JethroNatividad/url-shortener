@@ -23,7 +23,7 @@ const UrlRedirect = () => {
     }, [])
     return (
         <div>
-            hi
+            Redirecting ...
         </div>
     )
 }

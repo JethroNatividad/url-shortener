@@ -13,8 +13,11 @@ const Content = ({ shortenUrl }) => {
                     <AiOutlineLink className="text-2xl mr-2 text-gray-400" />
                     <input value={input} onChange={(e) => { setInput(e.currentTarget.value) }} className="outline-none bg-transparent flex-1 text-xl" placeholder="Paste link to shorten it" />
                     <button onClick={() => {
-                        shortenUrl(input)
-                        setInput("")
+                        // check if url is valid
+                        if (input.match(/^(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/)) {
+                            shortenUrl(input)
+                            setInput("")
+                        }
                     }} type="button" className="w-20 bg-gradient-to-l from-violet-600 to-violet-400 rounded-lg px-3 py-2 text-gray-100 shadow-gray-400 shadow-lg">Shorten</button>
                 </div>
             </div>
