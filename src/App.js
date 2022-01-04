@@ -6,6 +6,8 @@ import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from './firebase'
 import UrlList from './components/UrlList';
 import { nanoid } from 'nanoid'
+import { Routes, Route } from "react-router-dom";
+import UrlRedirect from './components/UrlRedirect';
 
 function App() {
   const [urls, setUrls] = React.useState([]);
@@ -36,9 +38,15 @@ function App() {
 
   return (
     <div className="App h-screen bg-gray-100">
-      <Header />
-      <Content shortenUrl={shortenUrl} />
-      <UrlList urls={urls} />
+      <Routes>
+        <Route path="/" element={<>
+          <Header />
+          <Content shortenUrl={shortenUrl} />
+          <UrlList urls={urls} />
+        </>} />
+
+        <Route path="/:id" element={<UrlRedirect />} />
+      </Routes>
     </div>
   );
 }
