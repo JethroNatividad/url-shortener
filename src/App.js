@@ -20,7 +20,7 @@ function App() {
     return main();
   }, [])
 
-  async function ShortenUrl(url) {
+  async function shortenUrl(url) {
     try {
       const docRef = await addDoc(collection(db, "urls"), {
         main_url: "Ada",
@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="App h-screen bg-gray-100">
       <Header />
-      <Content />
+      <Content shortenUrl={shortenUrl} />
       <UrlList urls={urls} />
     </div>
   );

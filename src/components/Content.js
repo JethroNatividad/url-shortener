@@ -1,6 +1,7 @@
 import React from 'react'
 import { AiOutlineLink } from 'react-icons/ai'
-const Content = () => {
+const Content = ({ shortenUrl }) => {
+
     return (
         <div className="flex flex-col items-center mt-48">
             <div>
