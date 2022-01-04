@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Content from './components/Content';
 import Header from './components/Header';
-import { collection, addDoc, onSnapshot, orderBy } from "firebase/firestore";
+import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import { db } from './firebase'
 import UrlList from './components/UrlList';
 import { nanoid } from 'nanoid'
