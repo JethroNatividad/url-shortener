@@ -2,18 +2,18 @@ import React from 'react'
 
 const UrlList = ({ urls }) => {
     return (
-        <div>
-            <table>
+        <div className="flex justify-center mt-14">
+            <table className="w-1/3">
                 <tr>
-                    <td>Original Url</td>
-                    <td>Shortened</td>
-                    <td>Visits</td>
+                    <td className="px-3 py-1 text-gray-500">Original Url</td>
+                    <td className="px-3 py-1 text-gray-500">Shortened</td>
+                    <td className="px-3 py-1 text-gray-500">Visits</td>
                 </tr>
                 {urls.map((url, index) => (
-                    <tr key={index}>
-                        <td>{url.main_url}</td>
-                        <td>{url.short_url}</td>
-                        <td>{url.clicks}</td>
+                    <tr key={index} className='bg-white shadow-sm shadow-gray-400 mb-1'>
+                        <td className="px-3 py-1 text-blue-800 hover:underline"><a href={url.main_url}>{url.main_url}</a></td>
+                        <td className="px-3 py-1 text-blue-800 hover:underline"><a href={url.short_url}>{url.short_url}</a></td>
+                        <td className="px-3 py-1">{url.clicks}</td>
                     </tr>
                 ))}
 
