@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Content from './components/Content';
 import Header from './components/Header';
-import { collection, getDocs, addDoc, onSnapshot, doc } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, orderBy } from "firebase/firestore";
 import { db } from './firebase'
 import UrlList from './components/UrlList';
 import { nanoid } from 'nanoid'
@@ -37,7 +37,7 @@ function App() {
       const docRef = await addDoc(collection(db, "urls"), {
         main_url: url,
         short_url: nanoid(6),
-        clicks: 0
+        clicks: 0,
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
