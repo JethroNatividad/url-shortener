@@ -20,7 +20,7 @@ function App() {
     return main();
   }, [])
 
-  async function AddNewUrl(url) {
+  async function ShortenUrl(url) {
     try {
       const docRef = await addDoc(collection(db, "urls"), {
         main_url: "Ada",
