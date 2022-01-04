@@ -5,6 +5,7 @@ import Header from './components/Header';
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from './firebase'
 import UrlList from './components/UrlList';
+import { nanoid } from 'nanoid'
 
 function App() {
   const [urls, setUrls] = React.useState([]);
@@ -24,7 +25,7 @@ function App() {
     try {
       const docRef = await addDoc(collection(db, "urls"), {
         main_url: url,
-        short_url: "Lovelace",
+        short_url: nanoid(6),
         clicks: 0
       });
       console.log("Document written with ID: ", docRef.id);
