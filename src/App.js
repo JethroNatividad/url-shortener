@@ -56,7 +56,7 @@ function App() {
   return (
     <AppContext.Provider value={{ darkMode, toggleDarkMode }}>
       <div className={darkMode && 'dark'}>
-        <div className="App min-h-screen bg-gray-100 dark:bg-black" >
+        <div className="App min-h-screen bg-gray-100 dark:bg-black select-none" >
 
           <Routes>
             <Route path="/" element={<>
