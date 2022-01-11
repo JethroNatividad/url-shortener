@@ -11,8 +11,14 @@
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 300ms;
 }
-/* @layer components{
-	.classname {
-		@apply classnames;
+@layer components {
+	.App {
+		@apply min-h-screen bg-gray-100 dark:bg-black select-none pb-10;
 	}
-} */
+	.tableHead {
+		@apply px-3 py-1 text-gray-500 dark:text-offWhite-100;
+	}
+	.tableLink {
+		@apply px-3 py-1 text-blue-800 dark:text-blue-200 hover:underline;
+	}
+}
