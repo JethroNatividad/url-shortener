@@ -1,4 +1,5 @@
 import React from 'react'
+import { isWebUri } from 'valid-url'
 import { AiOutlineLink } from 'react-icons/ai'
 const Content = ({ shortenUrl }) => {
     const [input, setInput] = React.useState("");
@@ -14,7 +15,11 @@ const Content = ({ shortenUrl }) => {
                     <input value={input} onChange={(e) => { setInput(e.currentTarget.value) }} className="outline-none bg-transparent flex-1 text-xl" placeholder="Paste link to shorten it" />
                     <button onClick={() => {
                         // check if url is valid
-                        if (input.match(/^(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/)) {
+                        // if (input.match(/^(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/)) {
+                        //     shortenUrl(input)
+                        //     setInput("")
+                        // }
+                        if (isWebUri(input)) {
                             shortenUrl(input)
                             setInput("")
                         }
