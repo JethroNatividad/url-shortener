@@ -11,6 +11,9 @@ module.exports = {
           100: '#eee',
           200: '#F7F6F2'
         }
+      },
+      screens: {
+        'xs': '420px'
       }
     },
   },
