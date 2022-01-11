@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Content from './components/Content';
 import Header from './components/Header';
-import { collection, addDoc, onSnapshot } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, Timestamp } from "firebase/firestore";
 import { db } from './firebase'
 import UrlList from './components/UrlList';
 import { nanoid } from 'nanoid'
@@ -46,6 +46,7 @@ function App() {
         main_url: url,
         short_url: nanoid(6),
         clicks: 0,
+        date: Timestamp.fromDate(new Date())
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -55,8 +56,8 @@ function App() {
 
   return (
     <AppContext.Provider value={{ darkMode, toggleDarkMode }}>
-      <div className={`min-h-screen ${darkMode && 'dark'}`}>
-        <div className="App bg-gray-100 dark:bg-black select-none pb-10" >
+      <div className={darkMode && 'dark'}>
+        <div className="App min-h-screen bg-gray-100 dark:bg-black select-none pb-10" >
 
           <Routes>
             <Route path="/" element={<>
