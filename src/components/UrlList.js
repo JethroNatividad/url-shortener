@@ -3,7 +3,7 @@ import React from 'react'
 const UrlList = ({ urls }) => {
     return (
         <div className="flex flex-col items-center mt-14 px-[5%]">
-            <table className="w-full text-xs  md:text-lg md:w-[600px] border-collapse  table-fixed ">
+            <table className="w-full text-sm  md:text-lg md:w-[600px] border-collapse  table-fixed ">
                 <thead>
                     <tr>
                         <th className="tableHead w-[60%]">Original Url</th>
