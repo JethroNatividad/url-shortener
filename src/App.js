@@ -55,19 +55,22 @@ function App() {
 
   return (
     <AppContext.Provider value={{ darkMode, toggleDarkMode }}>
-      <div className={`App min-h-screen bg-gray-100 ${darkMode && 'dark'}`}>
+      <div className={darkMode && 'dark'}>
+        <div className="App min-h-screen bg-gray-100 dark:bg-black" >
 
-        <Routes>
-          <Route path="/" element={<>
-            <Header />
-            <Content shortenUrl={shortenUrl} />
-            <UrlList urls={urls} />
-          </>} />
+          <Routes>
+            <Route path="/" element={<>
+              <Header />
+              <Content shortenUrl={shortenUrl} />
+              <UrlList urls={urls} />
+            </>} />
 
-          <Route path="/:id" element={<UrlRedirect />} />
-        </Routes>
+            <Route path="/:id" element={<UrlRedirect />} />
+          </Routes>
+
+        </div>
       </div>
-    </AppContext.Provider>
+    </AppContext.Provider >
   );
 }
 
