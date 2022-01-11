@@ -8,9 +8,17 @@ import UrlList from './components/UrlList';
 import { nanoid } from 'nanoid'
 import { Routes, Route } from "react-router-dom";
 import UrlRedirect from './components/UrlRedirect';
+import { AppContext } from './context';
+
 
 function App() {
   const [urls, setUrls] = React.useState([]);
+  const [darkMode, setDarkMode] = React.useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  }
+
   useEffect(() => {
     // async function main() {
     //   const querySnapshot = await getDocs(collection(db, "urls"));
@@ -46,17 +54,20 @@ function App() {
   }
 
   return (
-    <div className="App h-screen bg-gray-100">
-      <Routes>
-        <Route path="/" element={<>
-          <Header />
-          <Content shortenUrl={shortenUrl} />
-          <UrlList urls={urls} />
-        </>} />
+    <AppContext.Provider value={{ darkMode, toggleDarkMode }}>
+      <div className={`App min-h-screen bg-gray-100 ${darkMode && 'dark'}`}>
 
-        <Route path="/:id" element={<UrlRedirect />} />
-      </Routes>
-    </div>
+        <Routes>
+          <Route path="/" element={<>
+            <Header />
+            <Content shortenUrl={shortenUrl} />
+            <UrlList urls={urls} />
+          </>} />
+
+          <Route path="/:id" element={<UrlRedirect />} />
+        </Routes>
+      </div>
+    </AppContext.Provider>
   );
 }
 
