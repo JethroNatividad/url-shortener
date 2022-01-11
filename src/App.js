@@ -63,7 +63,7 @@ function App() {
             <Route path="/" element={<>
               <Header />
               <Content shortenUrl={shortenUrl} />
-              <UrlList urls={urls} />
+              {urls.length > 0 && <UrlList urls={urls} />}
             </>} />
 
             <Route path="/:id" element={<UrlRedirect />} />
