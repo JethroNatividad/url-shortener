@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Content from './components/Content';
 import Header from './components/Header';
-import { collection, addDoc, onSnapshot, Timestamp } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, Timestamp, orderBy, query } from "firebase/firestore";
 import { db } from './firebase'
 import UrlList from './components/UrlList';
 import { nanoid } from 'nanoid'
@@ -29,7 +29,8 @@ function App() {
     // setUrls(data);
     // }
     // main();
-    const unsub = onSnapshot(collection(db, "urls"), (querySnapshot) => {
+    const q = query(collection(db, "urls"), orderBy("date", "desc"));
+    const unsub = onSnapshot(q, (querySnapshot) => {
       const data = []
       querySnapshot.forEach((doc) => {
         data.push(doc.data())
